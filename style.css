@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Overpass:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(125% 125% at 50% 100%, #000000 40%, #2b0707 100%);
+    /* https://patterncraft.fun/ */
+    color: white;
+    font-family: "Overpass", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
