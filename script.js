@@ -7,13 +7,24 @@ const newQuoteBtn = document.getElementById('new-quote');
 let apiQuotes =
     [];
 function newQuotes() {
+
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-    authorText.textContent = quote.author;
-    quoteText.textContent = quote.quote;
+    if (!quote.author) {
+        authorText.textContent = 'Unkown';
+    } else {
+        authorText.textContent = quote.author;
+    }
+    if (quote.text.length > 50) {
+        quoteText.classList.add('long-quote');
+    } else {
+        quoteText.classList.remove('long-quote')
+    }
+
+    quoteText.textContent = quote.text;
 }
 
 async function getQuotes() {
-    const apiURL = 'https://luciferquotes.shadowdev.xyz/api/quotes/2000';
+    const apiURL = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
     try {
         const response = await fetch(apiURL);
         apiQuotes = await response.json();
@@ -25,5 +36,13 @@ async function getQuotes() {
         // Catch Error
     }
 }
+
+function tweetQuote() {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
+    window.open(twitterUrl, '_blank');
+}
+
+newQuoteBtn.addEventListener('click', newQuotes);
+twitterBtn.addEventListener('click', tweetQuote);
 
 getQuotes();
